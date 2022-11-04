@@ -1,7 +1,12 @@
-import { fetchCountries } from './fetchCountries';
-import Notiflix from 'notiflix';
-import debounce from 'lodash.debounce';
 import './css/styles.css';
+import { fetchCountries } from './fetchCountries';
+import debounce from 'lodash.debounce';
+import Notiflix from 'notiflix';
+
+Notiflix.Notify.init({
+  position: 'center-top',
+  clickToClose: false,
+});
 
 const DEBOUNCE_DELAY = 300;
 
@@ -28,7 +33,7 @@ function onInput(evt) {
 
 function createMarkup(data) {
   if (data.length > 10) {
-    return Notiflix.Notify.warning(
+    return Notiflix.Notify.info(
       'Too many matches found. Please enter a more specific name.'
     );
   } else if (data.length > 2 && data.length < 10) {
